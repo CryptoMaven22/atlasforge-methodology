@@ -119,7 +119,17 @@ html, body { margin:0; padding:0; background:#07080b; }
 .atlasforge-site .af-footer{padding:26px 0 46px;color:#98a2b0}
     .af-foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.08);padding-top:18px}
     .af-fade{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
-    .af-fade.visible{opacity:1;transform:none}
+    .af-fade.af-visible{opacity:1;transform:none}
+
+    @media (max-width:1180px){
+      .atlasforge-site .af-links{gap:14px;font-size:.94rem}
+      .atlasforge-site .af-btn{padding:11px 14px}
+      .atlasforge-site .af-brand small{font-size:.66rem}
+    }
+    @media (max-width:980px){
+      .atlasforge-site .af-links a:not(.af-btn){display:none}
+      .atlasforge-site .af-nav{min-height:68px}
+    }
     @media (max-width:1100px){
       .af-hero-grid,.af-section-head,.af-cta-box{grid-template-columns:1fr}
       .af-grid-4,.af-deliverables,.af-statgrid{grid-template-columns:repeat(2,1fr)}
