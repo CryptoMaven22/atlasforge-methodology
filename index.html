@@ -118,8 +118,8 @@ html, body { margin:0; padding:0; background:#07080b; }
     .af-cta-copy p{font-size:1.08rem;color:#d2d8e1}
 .atlasforge-site .af-footer{padding:26px 0 46px;color:#98a2b0}
     .af-foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.08);padding-top:18px}
-    .af-fade{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
-    .af-fade.af-visible{opacity:1;transform:none}
+    .af-fade{opacity:1 !important;transform:none !important;transition:none !important}
+    .af-fade.af-visible{opacity:1 !important;transform:none !important}
 
     @media (max-width:1180px){
       .atlasforge-site .af-links{gap:14px;font-size:.94rem}
@@ -147,7 +147,21 @@ html, body { margin:0; padding:0; background:#07080b; }
       .af-phase{padding-left:24px;padding-top:78px}
       .af-phase-num{left:24px;top:22px}
     }
-  </style>
+  
+/* Deployment-safe visibility: core content must never depend on JavaScript. */
+.atlasforge-site .af-hero-copy,
+.atlasforge-site .af-hero-visual-shell,
+.atlasforge-site .af-stat,
+.atlasforge-site .af-section-head,
+.atlasforge-site .af-card,
+.atlasforge-site .af-phase,
+.atlasforge-site .af-highlight-band,
+.atlasforge-site .af-cta-box {
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
+}
+</style>
 </head>
 <body><div class="atlasforge-site">
 <header class="af-header">
@@ -298,13 +312,6 @@ html, body { margin:0; padding:0; background:#07080b; }
 <div>Turning operational ambiguity into validated, buildable products.</div>
 </div>
 </footer>
-<script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('af-visible');
-      });
-    }, { threshold: .12 });
-    document.querySelectorAll('.af-fade').forEach(el => observer.observe(el));
-  </script>
+<script>document.documentElement.classList.add("af-ready");</script>
 </div></body>
 </html>
