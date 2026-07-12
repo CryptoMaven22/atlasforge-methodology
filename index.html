@@ -138,7 +138,6 @@ html, body { margin:0; padding:0; background:#07080b; }
     }
     @media (max-width:780px){
       .af-wrap{width:calc(100% - 24px)}
-      .af-links{display:none}
       .af-grid-4,.af-journey,.af-artifact-grid,.af-deliverables,.af-statgrid{grid-template-columns:1fr}
 .atlasforge-site h1{max-width:none}
       .af-highlight-band{grid-template-columns:1fr}
@@ -171,12 +170,13 @@ html, body { margin:0; padding:0; background:#07080b; }
 <span class="af-brand-mark"></span>
 <span>ATLASFORGE<small>An AtlasFlow methodology</small></span>
 </a>
+<button class="af-menu" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
 <div class="af-links">
 <a href="#why">Why AtlasForge</a>
 <a href="#method">Method</a>
 <a href="#artifacts">Artifacts</a>
 <a href="#deliverables">Customer outcomes</a>
-<a class="af-btn af-secondary" href="#contact">Start a conversation</a>
+<a class="af-btn af-primary af-nav-cta" href="#method">Explore AtlasForge</a>
 </div>
 </nav>
 </div>
@@ -313,5 +313,23 @@ html, body { margin:0; padding:0; background:#07080b; }
 </div>
 </footer>
 <script>document.documentElement.classList.add("af-ready");</script>
-</div></body>
+</div>  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const menu = document.querySelector('.af-menu');
+      const links = document.querySelector('.af-links');
+      if (menu && links) {
+        menu.addEventListener('click', function () {
+          const open = links.classList.toggle('af-open');
+          menu.setAttribute('aria-expanded', String(open));
+        });
+        links.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            links.classList.remove('af-open');
+            menu.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    });
+  </script>
+</body>
 </html>
